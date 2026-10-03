@@ -13,7 +13,7 @@ Working scratchpad across chats. Owner updates when priorities change. Agent: re
 Goal of this stretch: **see dice on a board and roll random faces**. No scoring / Farkle rules yet.
 
 - [ ] Project setup: Godot 4.7, window 1280×720, Main Scene → `scenes/main.tscn` when it exists
-- [ ] Create `scenes/board.tscn` (2D table / play surface)
+- [x] Create `scenes/table.tscn` (root `Table` Node2D, `Board` TextureRect + `DiceRollArea` / `DiceKeepArea`)
 - [ ] Create `scenes/dice.tscn` (one die, face 1–6)
 - [ ] Create `scenes/main.tscn` = board + dice instances
 - [ ] Add a **Roll** button that randomizes face(s) on the dice

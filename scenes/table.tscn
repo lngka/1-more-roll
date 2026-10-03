@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://d3ro76dkkoklf"]
+
+[ext_resource type="Texture2D" uid="uid://drd3mept4m3o0" path="res://assets/board/painted_wood.jpg" id="1_02ppr"]
+
+[node name="Table" type="Node2D" unique_id=245988441]
+
+[node name="Board" type="TextureRect" parent="." unique_id=548379539]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_02ppr")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="DiceRollArea" type="ColorRect" parent="Board" unique_id=703141270]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 262.0
+offset_right = 839.0
+offset_bottom = 463.0
+color = Color(0.8, 1, 1, 0.09803922)
+
+[node name="DiceKeepArea" type="ColorRect" parent="Board" unique_id=1833814742]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 187.0
+offset_right = 355.0
+offset_bottom = 518.0
+color = Color(0.8, 1, 1, 0.09803922)
