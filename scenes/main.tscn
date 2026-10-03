@@ -2,6 +2,28 @@
 
 [ext_resource type="PackedScene" uid="uid://d3ro76dkkoklf" path="res://scenes/table.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://ts7f1tx4tm22" path="res://scenes/dice.tscn" id="2_sugp2"]
+[ext_resource type="FontFile" uid="uid://b1xc87408hhkk" path="res://assets/fonts/LilitaOne-Regular.ttf" id="3_sugp2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n415v"]
+bg_color = Color(0.41960785, 0.24313726, 0.14901961, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rc3jl"]
+bg_color = Color(0.5964375, 0.35975078, 0.23420325, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
+bg_color = Color(0.30913374, 0.17287761, 0.10009047, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Main" type="Node2D" unique_id=1957642056]
 
@@ -30,8 +52,14 @@ position = Vector2(826, 423)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1292019663]
 
 [node name="RollButton" type="Button" parent="CanvasLayer" unique_id=719305490]
-offset_left = 646.0
-offset_top = 605.0
-offset_right = 683.0
-offset_bottom = 636.0
+custom_minimum_size = Vector2(180, 56)
+offset_left = 579.0
+offset_top = 606.0
+offset_right = 759.0
+offset_bottom = 662.0
+theme_override_fonts/font = ExtResource("3_sugp2")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_n415v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rc3jl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jyhfs")
 text = "Roll"
