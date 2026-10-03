@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cn1kho6h46y60"]
+
+[ext_resource type="PackedScene" uid="uid://d3ro76dkkoklf" path="res://scenes/table.tscn" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://ts7f1tx4tm22" path="res://scenes/dice.tscn" id="2_sugp2"]
+
+[node name="Main" type="Node2D" unique_id=1957642056]
+
+[node name="Table" parent="." unique_id=245988441 instance=ExtResource("1_0wfyh")]
+
+[node name="DiceGroup" type="Node2D" parent="." unique_id=1413732771]
+
+[node name="Dice1" parent="DiceGroup" unique_id=810007107 instance=ExtResource("2_sugp2")]
+position = Vector2(543, 289)
+
+[node name="Dice2" parent="DiceGroup" unique_id=844287178 instance=ExtResource("2_sugp2")]
+position = Vector2(687, 289)
+
+[node name="Dice3" parent="DiceGroup" unique_id=1707441429 instance=ExtResource("2_sugp2")]
+position = Vector2(823, 286)
+
+[node name="Dice4" parent="DiceGroup" unique_id=130808877 instance=ExtResource("2_sugp2")]
+position = Vector2(547, 423)
+
+[node name="Dice5" parent="DiceGroup" unique_id=552346585 instance=ExtResource("2_sugp2")]
+position = Vector2(688, 423)
+
+[node name="Dice6" parent="DiceGroup" unique_id=1367651754 instance=ExtResource("2_sugp2")]
+position = Vector2(826, 423)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1292019663]
+
+[node name="RollButton" type="Button" parent="CanvasLayer" unique_id=719305490]
+offset_left = 646.0
+offset_top = 605.0
+offset_right = 683.0
+offset_bottom = 636.0
+text = "Roll"

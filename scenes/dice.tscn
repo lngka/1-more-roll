@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ts7f1tx4tm22"]
+
+[ext_resource type="Texture2D" uid="uid://cfea11q1xt6xa" path="res://assets/dice/die_white_1.png" id="1_27nyo"]
+[ext_resource type="Script" uid="uid://ob3g78anu05n" path="res://scenes/dice.gd" id="1_mg5ex"]
+[ext_resource type="Texture2D" uid="uid://bu1kfhthuwoh1" path="res://assets/dice/die_white_2.png" id="3_pb8pk"]
+[ext_resource type="Texture2D" uid="uid://cmw8q1hmytd7e" path="res://assets/dice/die_white_3.png" id="4_ocjtb"]
+[ext_resource type="Texture2D" uid="uid://c3awlx1lfwvf" path="res://assets/dice/die_white_4.png" id="5_dicg2"]
+[ext_resource type="Texture2D" uid="uid://do8y0yl7j121a" path="res://assets/dice/die_white_5.png" id="6_pgf55"]
+[ext_resource type="Texture2D" uid="uid://c31yoioo7iuyu" path="res://assets/dice/die_white_6.png" id="7_dlvbc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55leh"]
+size = Vector2(65, 64)
+
+[node name="Dice" type="Area2D" unique_id=810007107]
+script = ExtResource("1_mg5ex")
+face_textures = Array[Texture2D]([ExtResource("1_27nyo"), ExtResource("3_pb8pk"), ExtResource("4_ocjtb"), ExtResource("5_dicg2"), ExtResource("6_pgf55"), ExtResource("7_dlvbc")])
+metadata/_edit_group_ = true
+
+[node name="Face" type="Sprite2D" parent="." unique_id=1380474939]
+texture = ExtResource("1_27nyo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=309238497]
+shape = SubResource("RectangleShape2D_55leh")

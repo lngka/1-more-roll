@@ -14,7 +14,7 @@ Goal of this stretch: **see dice on a board and roll random faces**. No scoring 
 
 - [ ] Project setup: Godot 4.7, window 1280×720, Main Scene → `scenes/main.tscn` when it exists
 - [x] Create `scenes/table.tscn` (root `Table` Node2D, `Board` TextureRect + `DiceRollArea` / `DiceKeepArea`)
-- [ ] Create `scenes/dice.tscn` (one die, face 1–6)
+- [x] Create `scenes/dice.tscn` (Area2D `Dice` + `dice.gd` with `roll()`, 6 face textures)
 - [ ] Create `scenes/main.tscn` = board + dice instances
 - [ ] Add a **Roll** button that randomizes face(s) on the dice
 

@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="1moreRoll"
+run/main_scene="uid://cn1kho6h46y60"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
