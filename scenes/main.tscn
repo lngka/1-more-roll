@@ -5,6 +5,10 @@
 [ext_resource type="FontFile" uid="uid://b1xc87408hhkk" path="res://assets/fonts/LilitaOne-Regular.ttf" id="3_sugp2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n415v"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
 bg_color = Color(0.41960785, 0.24313726, 0.14901961, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -12,6 +16,10 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rc3jl"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
 bg_color = Color(0.5964375, 0.35975078, 0.23420325, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -19,6 +27,10 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
 bg_color = Color(0.30913374, 0.17287761, 0.10009047, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
