@@ -1,1 +1,1 @@
-Tôi ngồi cùng bàn với một người chơi khác trong một quán rượu. Trên bàn có sáu viên xúc xắc. Tôi bấm Roll, các viên hiện kết quả. Tôi chọn hai viên muốn giữ, chúng được đánh dấu. 
+Tôi gieo sáu viên, chọn những viên có điểm. Điểm của lựa chọn hiện lên. Tôi có thể Bank để giữ điểm và kết thúc lượt, hoặc Roll tiếp những viên còn lại. Nếu lần gieo tiếp không có điểm, tôi mất toàn bộ điểm của lượt đó.
