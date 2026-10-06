@@ -56,7 +56,7 @@ Later (not now): `scripts/scoring.gd` when rules leave the UI scenes.
 
 ## Suggested order
 
-Current stretch: [`MEMORY.md`](MEMORY.md) — board + dice + roll button.
+Current stretch: [`MEMORY.md`](MEMORY.md)
 
 After that:
 
