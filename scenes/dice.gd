@@ -1,8 +1,8 @@
 extends Area2D
 
 @export var face_textures: Array[Texture2D]
-@export var held_color := Color.DODGER_BLUE
-@export var held_width := 4.0
+@export var held_style: StyleBoxFlat
+
 
 var value := 1
 var held := false
@@ -20,12 +20,12 @@ func _update_face():
 	queue_redraw()
 	
 func _draw():
-	if not held:
+	if not held or held_style == null:
 		return
-	var rect: Rect2 = $Face.get_rect().grow(held_width / 2)
-	draw_rect(rect, held_color, false, held_width)
-	
+	held_style.draw(get_canvas_item(), $Face.get_rect())
+
+
 func _on_input_event(_viewport, event: InputEvent, _shape_idx):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	if event.is_action_pressed("select_die"):
 		held = not held
 		_update_face()

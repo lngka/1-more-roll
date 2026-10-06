@@ -7,12 +7,22 @@
 [ext_resource type="Texture2D" uid="uid://c3awlx1lfwvf" path="res://assets/dice/die_white_4.png" id="5_dicg2"]
 [ext_resource type="Texture2D" uid="uid://do8y0yl7j121a" path="res://assets/dice/die_white_5.png" id="6_pgf55"]
 [ext_resource type="Texture2D" uid="uid://c31yoioo7iuyu" path="res://assets/dice/die_white_6.png" id="7_dlvbc"]
-[ext_resource type="Texture2D" uid="uid://bb0wn1g02eevu" path="res://assets/dice/die_white_border_1.png" id="8_4kp1s"]
-[ext_resource type="Texture2D" uid="uid://cegsaeliopy3" path="res://assets/dice/die_white_border_2.png" id="9_nkpnt"]
-[ext_resource type="Texture2D" uid="uid://bimm83clem5ry" path="res://assets/dice/die_white_border_3.png" id="10_mvkvt"]
-[ext_resource type="Texture2D" uid="uid://c40i7vees5h5q" path="res://assets/dice/die_white_border_4.png" id="11_qxx4u"]
-[ext_resource type="Texture2D" uid="uid://b7twam2xcoav1" path="res://assets/dice/die_white_border_5.png" id="12_v1png"]
-[ext_resource type="Texture2D" uid="uid://ctx8ritcp2glo" path="res://assets/dice/die_white_border_6.png" id="13_14loa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3119506, 0.46292454, 0.9888945, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55leh"]
 size = Vector2(65, 64)
@@ -20,7 +30,7 @@ size = Vector2(65, 64)
 [node name="Dice" type="Area2D" unique_id=810007107]
 script = ExtResource("1_mg5ex")
 face_textures = Array[Texture2D]([ExtResource("1_27nyo"), ExtResource("3_pb8pk"), ExtResource("4_ocjtb"), ExtResource("5_dicg2"), ExtResource("6_pgf55"), ExtResource("7_dlvbc")])
-held_textures = Array[Texture2D]([ExtResource("8_4kp1s"), ExtResource("9_nkpnt"), ExtResource("10_mvkvt"), ExtResource("11_qxx4u"), ExtResource("12_v1png"), ExtResource("13_14loa")])
+held_style = SubResource("StyleBoxFlat_jyhfs")
 metadata/_edit_group_ = true
 
 [node name="Face" type="Sprite2D" parent="." unique_id=1380474939]
