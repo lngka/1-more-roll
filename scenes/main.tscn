@@ -85,6 +85,13 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_sugp2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rc3jl")
 text = "Roll"
 
+[node name="HeldScoreLabel" type="Label" parent="CanvasLayer" unique_id=840481056]
+offset_left = 130.0
+offset_top = 192.0
+offset_right = 181.0
+offset_bottom = 215.0
+text = "Round"
+
 [node name="RollSound" type="AudioStreamPlayer" parent="." unique_id=917898339]
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1099681518]

@@ -2,6 +2,7 @@ extends Area2D
 
 @export var face_textures: Array[Texture2D]
 @export var held_style: StyleBoxFlat
+signal held_changed
 
 
 var value := 1
@@ -29,3 +30,4 @@ func _on_input_event(_viewport, event: InputEvent, _shape_idx):
 	if event.is_action_pressed("select_die"):
 		held = not held
 		_update_face()
+		held_changed.emit()

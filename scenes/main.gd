@@ -5,11 +5,16 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Music.play()
+	for die in $DiceGroup.get_children():
+		die.held_changed.connect(_on_die_held_changed)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_die_held_changed() -> void:
+	var values: Array[int] = []
+	for die in $DiceGroup.get_children():
+		if die.held:
+			values.append(die.value)
+	$CanvasLayer/HeldScoreLabel.text = "Held: %s" % [values]
 
 
 func _on_roll_button_pressed() -> void:
