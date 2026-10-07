@@ -22,17 +22,18 @@ Working scratchpad across chats. Owner updates when priorities change. Agent: re
 
 ## Now
 
-Goal of this stretch: **score the dice you set aside, then Bank or keep rolling** (`docs/scenezero.md`). One player only. Scoring numbers come from `docs/game-rules.md`.
+Goal of this stretch: **set aside a scoring selection, roll the rest, bust or bank** (`docs/scenezero.md`). One player only. No opponent yet: bust and bank both start a fresh turn for the same player. Scoring numbers come from `docs/game-rules.md`.
 
-- [ ] Show the points of the dice currently held
-- [ ] **Bank** adds those points to a saved total and ends the turn
-- [ ] **Roll** rerolls the dice still in play; if that roll scores nothing, the turn’s points are lost
+- [x] Show the points of the dice currently selected (2026-10-07)
+- [ ] **Roll** has two cases. The first roll of a turn needs no selection: throw all six. After that, Roll only commits a legal selection (points > 0, and every selected die is part of that score), adds those points to the turn total, locks those dice, and rerolls the rest. Locked dice stay out and do not combine with the new roll.
+- [ ] **Bust:** right after a roll, if the dice just rolled have no scoring combination, the turn total is lost and all six dice unlock. Show “Bust”. Do not switch to a CPU turn.
+- [ ] **Bank:** add the turn total to a saved total, then unlock all six and start a new turn. This is the only way points survive. Without it, a turn can only end by busting.
 
 ## Later (parking lot)
 
-- Hot dice (every die scored → roll all 6 again on the same turn)
+- Hot dice (every die scored → roll all 6 again on the same turn). Until then, if every die in play is locked, Roll has nothing left to throw — Bank instead.
 - Devil’s Head
-- Opponent / goal UI
+- Opponent / goal UI (bust or bank passes the turn)
 - Optional 3D — only after 2D loop works
 
 ## Notes
