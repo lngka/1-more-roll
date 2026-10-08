@@ -12,6 +12,8 @@ func _ready() -> void:
 	$Music.play()
 	for die in $DiceGroup.get_children():
 		die.selected_changed.connect(_on_die_selected_changed)
+		die.roll_home = die.position
+
 
 
 func _on_die_selected_changed() -> void:
@@ -43,20 +45,17 @@ func score_dice(values: Array) -> int:
 		best = maxi(best, 750 + _score_matches(_without_straight(counts, 2, 6)))
 	return best
 
-
 func _has_straight(counts: Array[int], from: int, to: int) -> bool:
 	for face in range(from, to + 1):
 		if counts[face] < 1:
 			return false
 	return true
 
-
 func _without_straight(counts: Array[int], from: int, to: int) -> Array[int]:
 	var left := counts.duplicate()
 	for face in range(from, to + 1):
 		left[face] -= 1
 	return left
-
 
 # Không có sảnh: bộ ba trở lên, rồi mặt 1 và 5 còn lại.
 # Mặt 2, 3, 4, 6 đứng ít hơn 3 viên thì không có điểm.
@@ -78,7 +77,7 @@ func _score_matches(counts: Array[int]) -> int:
 func _on_roll_button_pressed() -> void:
 	var any_rolled := false
 	for die in $DiceGroup.get_children():
-		if die.selected or die.banked:
+		if die.selected:
 			continue
 		die.roll()
 		any_rolled = true
@@ -92,3 +91,29 @@ func _on_bank_button_pressed() -> void:
 func _refresh_score_labels() -> void:
 	$CanvasLayer/TurnScoreLabel.text = "Turn: %d" % turn_score
 	$CanvasLayer/BankedScoreLabel.text = "Total: %d" % banked_score
+
+func _bank_area_rect_in_dice_group() -> Rect2:
+	var area: Control = $Table/Board/DiceBankArea
+	var g := area.get_global_rect()
+	var origin: Vector2 = $DiceGroup.get_global_transform().affine_inverse() * g.position
+	return Rect2(origin, g.size)
+
+
+func _layout_banked_dice() -> void:
+	var banked: Array[Node2D] = []
+	for die in $DiceGroup.get_children():
+		if die.banked:
+			banked.append(die)
+	var rect := _bank_area_rect_in_dice_group()
+	var cols := 2
+	var rows: int = ceili(banked.size() / float(cols))
+	if rows < 1:
+		return
+	var cell := Vector2(rect.size.x / cols, rect.size.y / rows)
+	for i in banked.size():
+		var row: int = int(i / float(cols))
+		var col: int = i % cols
+		banked[i].position = rect.position + Vector2(
+			(col + 0.5) * cell.x,
+			(row + 0.5) * cell.y
+		)

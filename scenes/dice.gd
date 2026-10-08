@@ -4,7 +4,7 @@ extends Area2D
 @export var selected_style: StyleBoxFlat
 signal selected_changed
 
-
+var roll_home: Vector2
 var value := 1
 var selected := false
 var banked := false
