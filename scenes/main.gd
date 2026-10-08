@@ -76,11 +76,13 @@ func _score_matches(counts: Array[int]) -> int:
 
 func _on_roll_button_pressed() -> void:
 	var any_rolled := false
+
 	for die in $DiceGroup.get_children():
 		if die.selected:
 			continue
 		die.roll()
 		any_rolled = true
+
 	if any_rolled:
 		$RollSound.stream = roll_sounds.pick_random()
 		$RollSound.play()
