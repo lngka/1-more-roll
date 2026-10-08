@@ -30,7 +30,7 @@ size = Vector2(65, 64)
 [node name="Dice" type="Area2D" unique_id=810007107]
 script = ExtResource("1_mg5ex")
 face_textures = Array[Texture2D]([ExtResource("1_27nyo"), ExtResource("3_pb8pk"), ExtResource("4_ocjtb"), ExtResource("5_dicg2"), ExtResource("6_pgf55"), ExtResource("7_dlvbc")])
-held_style = SubResource("StyleBoxFlat_jyhfs")
+selected_style = SubResource("StyleBoxFlat_jyhfs")
 metadata/_edit_group_ = true
 
 [node name="Face" type="Sprite2D" parent="." unique_id=1380474939]

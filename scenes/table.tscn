@@ -20,10 +20,17 @@ offset_bottom = 516.0
 mouse_filter = 2
 color = Color(0.8, 1, 1, 0.09803922)
 
-[node name="DiceKeepArea" type="ColorRect" parent="Board" unique_id=1833814742]
+[node name="DiceBankArea" type="ColorRect" parent="Board" unique_id=1833814742]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 187.0
-offset_right = 355.0
-offset_bottom = 518.0
+offset_left = 969.0
+offset_top = 189.0
+offset_right = 1196.0
+offset_bottom = 520.0
+color = Color(0.8, 1, 1, 0.09803922)
+
+[node name="InfoArea" type="ColorRect" parent="Board" unique_id=937622224]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 227.0
+offset_bottom = 720.0
 color = Color(0.8, 1, 1, 0.09803922)

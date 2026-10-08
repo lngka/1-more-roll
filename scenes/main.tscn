@@ -85,12 +85,33 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_sugp2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rc3jl")
 text = "Roll"
 
-[node name="HeldScoreLabel" type="Label" parent="CanvasLayer" unique_id=840481056]
-offset_left = 130.0
-offset_top = 192.0
-offset_right = 181.0
-offset_bottom = 215.0
-text = "Round"
+[node name="SelectionScoreLabel" type="Label" parent="CanvasLayer" unique_id=840481056]
+offset_left = 11.0
+offset_top = 279.0
+offset_right = 100.0
+offset_bottom = 302.0
+text = "Selection: 0"
+
+[node name="TurnScoreLabel" type="Label" parent="CanvasLayer" unique_id=1357745187]
+offset_left = 12.0
+offset_top = 306.0
+offset_right = 66.0
+offset_bottom = 329.0
+text = "Turn: 0"
+
+[node name="BankedScoreLabel" type="Label" parent="CanvasLayer" unique_id=1097774139]
+offset_left = 12.0
+offset_top = 333.0
+offset_right = 69.0
+offset_bottom = 356.0
+text = "Total: 0"
+
+[node name="BankButton" type="Button" parent="CanvasLayer" unique_id=63942696]
+offset_left = 807.0
+offset_top = 616.0
+offset_right = 855.0
+offset_bottom = 647.0
+text = "Bank"
 
 [node name="RollSound" type="AudioStreamPlayer" parent="." unique_id=917898339]
 
@@ -99,3 +120,4 @@ stream = ExtResource("9_85g3d")
 volume_db = -16.0
 
 [connection signal="pressed" from="CanvasLayer/RollButton" to="." method="_on_roll_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BankButton" to="." method="_on_bank_button_pressed"]

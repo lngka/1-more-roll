@@ -15,9 +15,9 @@ Working scratchpad across chats. Owner updates when priorities change. Agent: re
   - `scenes/dice.tscn` + `dice.gd`: Area2D `Dice`, `Face` Sprite2D, `roll()` picks `value` 1–6 from `face_textures`
   - `scenes/main.tscn` + `main.gd`: Table + `DiceGroup` (Dice1–6) + CanvasLayer/`RollButton` → `_on_roll_button_pressed()` rolls all
   - Assets: Kenney white dice (`assets/dice/die_white_*.png`), Lilita One font
-- Stretch 2 — **click a die to hold it; Roll only rerolls unheld dice** (2026-10-06)
-  - `dice.gd`: `held` flag, toggled by the `select_die` action; held dice draw a `StyleBoxFlat` border in `_draw()`
-  - `roll()` returns immediately when `held`; `main.gd` skips held dice
+- Stretch 2 — **click a die to select it; Roll only rerolls unselected dice** (2026-10-06)
+  - `dice.gd`: `selected` toggled by `select_die`; `selected_style` border in `_draw()`. Per-die `banked` = set aside for the turn (not the same as `banked_score` on Main).
+  - `roll()` skips `selected` or `banked`; `main.gd` skips those on Roll
   - Audio: `RollSound` plays a random `assets/audio/die-throw-*.ogg`; `Music` loops `TremLoadingloopl.wav`
 
 ## Now
@@ -31,7 +31,7 @@ Goal of this stretch: **set aside a scoring selection, roll the rest, bust or ba
 
 ## Later (parking lot)
 
-- Hot dice (every die scored → roll all 6 again on the same turn). Until then, if every die in play is locked, Roll has nothing left to throw — Bank instead.
+- Hot dice (every die scored → roll all 6 again on the same turn). Until then, if every die in play is banked, Roll has nothing left to throw — Bank instead.
 - Devil’s Head
 - Opponent / goal UI (bust or bank passes the turn)
 - Optional 3D — only after 2D loop works

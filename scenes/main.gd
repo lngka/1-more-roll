@@ -2,19 +2,24 @@ extends Node2D
 
 @export var roll_sounds: Array[AudioStream]
 
+var turn_score := 0
+var banked_score := 0
+var first_roll_of_turn := true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_refresh_score_labels()
 	$Music.play()
 	for die in $DiceGroup.get_children():
-		die.held_changed.connect(_on_die_held_changed)
+		die.selected_changed.connect(_on_die_selected_changed)
 
 
-func _on_die_held_changed() -> void:
+func _on_die_selected_changed() -> void:
 	var values: Array[int] = []
 	for die in $DiceGroup.get_children():
-		if die.held:
+		if die.selected:
 			values.append(die.value)
-	$CanvasLayer/HeldScoreLabel.text = "Round: %d" % score_dice(values)
+	$CanvasLayer/SelectionScoreLabel.text = "Selection: %d" % score_dice(values)
 
 
 # Một viên xúc xắc chỉ thuộc một tổ hợp. Sảnh và bộ ba có thể tranh nhau
@@ -70,14 +75,20 @@ func _score_matches(counts: Array[int]) -> int:
 			points += 50 * n
 	return points
 
-
 func _on_roll_button_pressed() -> void:
 	var any_rolled := false
 	for die in $DiceGroup.get_children():
-		if die.held:
+		if die.selected or die.banked:
 			continue
 		die.roll()
 		any_rolled = true
 	if any_rolled:
 		$RollSound.stream = roll_sounds.pick_random()
 		$RollSound.play()
+
+func _on_bank_button_pressed() -> void:
+	pass
+
+func _refresh_score_labels() -> void:
+	$CanvasLayer/TurnScoreLabel.text = "Turn: %d" % turn_score
+	$CanvasLayer/BankedScoreLabel.text = "Total: %d" % banked_score
