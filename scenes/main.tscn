@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://vsyuf4mq8e88" path="res://assets/audio/die-throw-3.ogg" id="4_choun"]
 [ext_resource type="AudioStream" uid="uid://6pb8exssonhs" path="res://assets/audio/die-throw-4.ogg" id="5_ya4ey"]
 [ext_resource type="AudioStream" uid="uid://b42u8lcqaagl4" path="res://assets/audio/TremLoadingloopl.wav" id="9_85g3d"]
+[ext_resource type="Texture2D" uid="uid://ca7o8d4mgd7d0" path="res://assets/ui/dice-combinations-reference.jpg" id="9_choun"]
+[ext_resource type="Script" uid="uid://dkq4bd14361ok" path="res://scenes/rules_overlay.gd" id="9_ya4ey"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n415v"]
 content_margin_left = 16.0
@@ -73,10 +75,10 @@ position = Vector2(826, 423)
 
 [node name="RollButton" type="Button" parent="CanvasLayer" unique_id=719305490]
 custom_minimum_size = Vector2(180, 56)
-offset_left = 579.0
-offset_top = 606.0
-offset_right = 759.0
-offset_bottom = 662.0
+offset_left = 467.0
+offset_top = 590.0
+offset_right = 647.0
+offset_bottom = 655.0
 theme_override_fonts/font = ExtResource("3_sugp2")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_n415v")
@@ -107,11 +109,69 @@ offset_bottom = 356.0
 text = "Total: 0"
 
 [node name="BankButton" type="Button" parent="CanvasLayer" unique_id=63942696]
-offset_left = 807.0
-offset_top = 616.0
-offset_right = 855.0
-offset_bottom = 647.0
+custom_minimum_size = Vector2(180, 56)
+offset_left = 715.0
+offset_top = 588.0
+offset_right = 895.0
+offset_bottom = 653.0
+theme_override_fonts/font = ExtResource("3_sugp2")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_n415v")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_n415v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sugp2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rc3jl")
 text = "Bank"
+
+[node name="RulesButton" type="Button" parent="CanvasLayer" unique_id=366389415]
+custom_minimum_size = Vector2(90, 56)
+offset_left = 1146.0
+offset_top = 19.0
+offset_right = 1244.0
+offset_bottom = 84.0
+theme_override_fonts/font = ExtResource("3_sugp2")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_n415v")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_n415v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sugp2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rc3jl")
+text = "Rules"
+
+[node name="RulesOverlay" type="ColorRect" parent="CanvasLayer" unique_id=769329900]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5647059)
+script = ExtResource("9_ya4ey")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/RulesOverlay" unique_id=81804276]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/RulesOverlay/CenterContainer" unique_id=793730265]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/RulesOverlay/CenterContainer/MarginContainer" unique_id=38317179]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/RulesOverlay/CenterContainer/MarginContainer/VBox" unique_id=193888404]
+layout_mode = 2
+texture = ExtResource("9_choun")
+stretch_mode = 5
+
+[node name="CloseRulesButton" type="Button" parent="CanvasLayer/RulesOverlay/CenterContainer/MarginContainer/VBox" unique_id=980190266]
+layout_mode = 2
+text = "Close"
 
 [node name="RollSound" type="AudioStreamPlayer" parent="." unique_id=917898339]
 
@@ -121,3 +181,5 @@ volume_db = -16.0
 
 [connection signal="pressed" from="CanvasLayer/RollButton" to="." method="_on_roll_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BankButton" to="." method="_on_bank_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/RulesButton" to="." method="_on_rules_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/RulesOverlay/CenterContainer/MarginContainer/VBox/CloseRulesButton" to="." method="_on_close_rules_button_pressed"]

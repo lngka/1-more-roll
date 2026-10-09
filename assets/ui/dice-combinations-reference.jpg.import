@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvvc2ndwxqxg7"
-valid=false
+uid="uid://ca7o8d4mgd7d0"
+path="res://.godot/imported/dice-combinations-reference.jpg-2d3ad4045cbb976fb0591f4b4d173a6a.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://docs/inspirations/table-bust.png"
+source_file="res://assets/ui/dice-combinations-reference.jpg"
+dest_files=["res://.godot/imported/dice-combinations-reference.jpg-2d3ad4045cbb976fb0591f4b4d173a6a.ctex"]
 
 [params]
 

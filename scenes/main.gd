@@ -14,8 +14,6 @@ func _ready() -> void:
 		die.selected_changed.connect(_on_die_selected_changed)
 		die.roll_home = die.position
 
-
-
 func _on_die_selected_changed() -> void:
 	var values: Array[int] = []
 	for die in $DiceGroup.get_children():
@@ -119,3 +117,9 @@ func _layout_banked_dice() -> void:
 			(col + 0.5) * cell.x,
 			(row + 0.5) * cell.y
 		)
+
+func _on_rules_button_pressed() -> void:
+	$CanvasLayer/RulesOverlay.visible = true
+
+func _on_close_rules_button_pressed() -> void:
+	$CanvasLayer/RulesOverlay.visible = false

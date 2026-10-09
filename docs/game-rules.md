@@ -76,4 +76,4 @@ Examples:
 
 ## Reference image
 
-See `docs/inspirations/dice-combinations-reference.png`.
+See `docs/inspirations/dice-combinations-reference.jpg`.

@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj1uq3r2vbldi"
-valid=false
+uid="uid://dy5b4bpsvnsh8"
+path="res://.godot/imported/dice-combinations-reference.jpg-bf07c4022cb6cb35f5188a31526e789b.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://docs/inspirations/table-hold-die.png"
+source_file="res://docs/inspirations/dice-combinations-reference.jpg"
+dest_files=["res://.godot/imported/dice-combinations-reference.jpg-bf07c4022cb6cb35f5188a31526e789b.ctex"]
 
 [params]
 
