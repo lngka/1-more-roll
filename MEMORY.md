@@ -24,15 +24,21 @@ Working scratchpad across chats. Owner updates when priorities change. Agent: re
   - `main.tscn`: `SelectionScoreLabel`, `TurnScoreLabel`, `BankedScoreLabel`, `Bank` button → `_on_bank_button_pressed` (stub)
   - `main.gd`: `turn_score`, `banked_score`, `first_roll_of_turn` (unused until Roll two-case); `_refresh_score_labels()`; `_bank_area_rect_in_dice_group()` + `_layout_banked_dice()` — call after setting `die.banked = true`
   - `dice.gd`: `roll_home` saved in `_ready()`; `banked` blocks select + roll
+- Stretch 3 — **Roll commits a scoring selection, then throws the rest** (2026-11-04)
+  - `main.gd`: `_on_roll_button_pressed` — `first_roll_of_turn` clears any selection and rolls all six; later rolls call `_commit_selection`
+  - `_commit_selection`: `score_dice` must be > 0, then add to `turn_score`, clear `selected`, set those dice `banked`, `queue_redraw` (drop the selection border), `_layout_banked_dice()`, then `_roll_free_dice`
+  - Banked dice stay in `DiceBankArea` and are not rolled again. If every die is banked, Roll has nothing left to throw
+  - Hole: a die that adds no points can still be committed when the rest of the selection scores (1 and 2 → 100, both banked)
 
 ## Now
 
 Goal of this stretch: **set aside a scoring selection, roll the rest, bust or bank** (`docs/scenezero.md`). One player only. No opponent yet: bust and bank both start a fresh turn for the same player. Scoring numbers come from `docs/game-rules.md`.
 
-**Next session start here:** rewrite `_on_roll_button_pressed` — `first_roll_of_turn` → roll all unbanked; else commit selection (`turn_score`, `banked`, `_layout_banked_dice()`), then roll the rest.
+**Next session start here:** close the hole in `_commit_selection`. A selection is legal only when every selected die is part of the score. `score_dice` returns only a total, so it cannot tell a spare 2 from a scoring 1. One check, still inside commit. Do not start Bust in the same session.
 
 - [x] Show the points of the dice currently selected (2026-10-07)
-- [ ] **Roll** has two cases. The first roll of a turn needs no selection: throw all six. After that, Roll only commits a legal selection (points > 0, and every selected die is part of that score), adds those points to the turn total, sets those dice `banked`, and rerolls the rest. Banked dice stay out and do not combine with the new roll.
+- [x] **Roll** has two cases (2026-11-04). The first roll of a turn needs no selection: clear selection and throw all six. After that, Roll commits when points > 0, adds those points to the turn total, sets those dice `banked`, and rerolls the rest. Banked dice stay out and do not combine with the new roll.
+- [ ] **Legal selection:** every selected die must be part of that score. Until this exists, choosing a 1 together with a 2 still commits both.
 - [ ] **Bust:** right after a roll, if the dice just rolled have no scoring combination, the turn total is lost and all six dice unlock. Show “Bust”. Do not switch to a CPU turn.
 - [ ] **Bank:** add the turn total to a saved total, then unlock all six and start a new turn. This is the only way points survive. Without it, a turn can only end by busting.
 

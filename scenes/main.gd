@@ -73,14 +73,46 @@ func _score_matches(counts: Array[int]) -> int:
 	return points
 
 func _on_roll_button_pressed() -> void:
-	var any_rolled := false
+	if first_roll_of_turn:
+		for die in $DiceGroup.get_children():
+			if die.selected:
+				die.selected = false
+				die.queue_redraw()
+		first_roll_of_turn = false
+	elif not _commit_selection():
+		return
+	_roll_free_dice()
+	_on_die_selected_changed()
 
+
+# Lần gieo thứ hai trở đi: chỉ cất lựa chọn có điểm (> 0).
+# Chưa kiểm tra "mọi viên đang chọn đều nằm trong cách tính điểm"
+func _commit_selection() -> bool:
+	var chosen: Array[Node2D] = []
+	var values: Array[int] = []
 	for die in $DiceGroup.get_children():
-		if die.selected:
+		if die.selected and not die.banked:
+			chosen.append(die)
+			values.append(die.value)
+	var points := score_dice(values)
+	if points <= 0:
+		return false
+	turn_score += points
+	for die in chosen:
+		die.selected = false
+		die.banked = true
+		die.queue_redraw()
+	_layout_banked_dice()
+	_refresh_score_labels()
+	return true
+
+func _roll_free_dice() -> void:
+	var any_rolled := false
+	for die in $DiceGroup.get_children():
+		if die.banked or die.selected:
 			continue
 		die.roll()
 		any_rolled = true
-
 	if any_rolled:
 		$RollSound.stream = roll_sounds.pick_random()
 		$RollSound.play()
@@ -97,7 +129,6 @@ func _bank_area_rect_in_dice_group() -> Rect2:
 	var g := area.get_global_rect()
 	var origin: Vector2 = $DiceGroup.get_global_transform().affine_inverse() * g.position
 	return Rect2(origin, g.size)
-
 
 func _layout_banked_dice() -> void:
 	var banked: Array[Node2D] = []
